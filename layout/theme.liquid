@@ -151,7 +151,7 @@
       - The template is defined (will be undefined for app proxies like /apps|a|community|tools/*)
       - The current template is not the login page, unless multipass login is enabled
     {% endcomment %}
-    {%- assign should_redirect = template != blank and template.name != 'login' or settings.multipass_login -%}
+    {%- assign should_redirect = template -%}
 
     {%- if settings.storefront_hostname != blank and should_redirect -%}
     <script>
@@ -239,3 +239,14 @@
     {%- endif -%}
   </body>
 </html>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- assign should_redirect = template != blank and template.name != 'login'
+    or settings.multipass_login -%}"
+  to: "{%- assign should_redirect = template -%}"
+  position: 8519..8560
+{% endcomment %}

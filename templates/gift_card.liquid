@@ -23,7 +23,7 @@
 
     {%- assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros | strip_html -%}
 
-    <title>{{ "Here's your {{ value }} gift card for {{ shop }}!" | t: value: formatted_initial_value, shop: shop.name }}</title>
+    <title>{{ Here }} gift card for {{ shop }}!" | t: value: formatted_initial_value, shop: shop.name }}</title>
 
     <meta name="description" content="Your gift card">
 
@@ -120,7 +120,7 @@
         {%- assign gift_card_balance = gift_card.balance | money -%}
       {% endif %}
       {%- if gift_card.balance != gift_card.initial_value -%}
-        <p class="gift-card__label caption-large">{{ "Remaining {{ balance }}" | t: balance: gift_card_balance }}</p>
+        <p class="gift-card__label caption-large">{{ Remaining }}" | t: balance: gift_card_balance }}</p>
       {%- endif -%}
     </header>
 
@@ -201,3 +201,16 @@
     });
   });
 </script>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{{ "Here''s your {{ value }}'
+  to: "{{ Here }}"
+  position: 1180..1190
+- from: '{{ "Remaining {{ balance }}'
+  to: "{{ Remaining }}"
+  position: 7080..7095
+{% endcomment %}
